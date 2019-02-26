@@ -63,31 +63,27 @@ public class Taller4 {
 	* @return cual es el costo que tiene ir desde inicio a fin
 	*/
 	public static int costoMinimo(Digraph g, int v, int w, boolean[] visitados) {
-		  visitados[v] = true;
-          if (v == w)
+	  int menorRespuesta = Integer.MAX_VALUE; //infinito
+          visitados[v] = true;
+          if (v == w){
+              visitados[v] = false;
              return 0;
+          }
           else{
               ArrayList<Integer> adyacentes = g.getSucessors(v);
-              if (adyacentes.contains(w))
-                 return g.getWeight(v,w);
-              for (Integer adyacente: adyacentes){
+              
+              //else
+              for (Integer adyacente: adyacentes)//{for(int i = 0; i < adyacentes.size(); i++) {Integer adyacente = adyacentes.get(i);}
                 if (!visitados[adyacente]){
                      int respuesta = costoMinimo(g, adyacente, w, visitados);
-                     int respuestaConLoQueYaTengo = respuesta + g.getWeight(v,adyacente);
-                     
-                     if (respuestaConLoQueYaTengo <costoMinimo(g, adyacente, w, visitados) )
-                       return respuestaConLoQueYaTengo;
+                     int respuestaConLoQueYaTengo = respuesta + g.getWeight(v,adyacente);      
+                     if (respuestaConLoQueYaTengo < menorRespuesta )
+                       menorRespuesta = respuestaConLoQueYaTengo;
                   }
               }
-              return Integer.MAX_VALUE; //infinito 
+              visitados[v] = false;
+              return menorRespuesta; //infinito 
 	}
         }
-	
-
-
-	
-
-
-	
 
 }
