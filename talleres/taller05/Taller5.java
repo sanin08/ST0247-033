@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ASUS
+ * @author Juan Pablo Peña, Juan Sebastian Sanin 
  */
 public class Taller5 {
  public static void Cgrafo(int n,Digraph g) {
@@ -18,14 +18,14 @@ public class Taller5 {
   // como recorrer el grafo para hacer la comparativa de los colores ya que tenemos que evaluar
  //los vertices con los cuales estan conexos y validar sus colores
     private static boolean CgrafoAux(Digraph g,int v,int n, int[] tablero) {
-        if (v == n) {
+        if (v == g.size()-1) {
             imprimirTablero(tablero); 
             return true;
         }else{
-         ArrayList<Integer> adyacentes = g.getSucessors(v);            
+                     
             for(int i=0;i<n;i++){
                 tablero[v] = i;
-                if (esValidoBK(tablero, v,adyacentes)==true){ // hacer una comparativa unicamente con los que estan conexos
+                if (esValidoBK(tablero, v,g)==true){ // hacer una comparativa unicamente con los que estan conexos
                   boolean respuesta=  CgrafoAux(g,n, v+1, tablero);
                 
                 if(respuesta==true){
@@ -38,15 +38,15 @@ public class Taller5 {
         return false;
     }
   
-    public static boolean esValidoBK(int[] tablero, int hastaColumnaI,ArrayList<Integer>adyacentes) {
-        for (int i = 0; i <= 1; i++){
-           for(int j=i+1;j<adyacentes.size()-1;j++)
+    public static boolean esValidoBK(int[] tablero, int v,Digraph g) {
+       int i=v;
+           for(int j=0;j<tablero.length-1;j++)
                // se esta validando unicamente con el nodo siguiente
-                if (tablero[i]==tablero[j] ){                 
+                if (g.getWeight(i, j )!=0&&tablero[i]==tablero[j]){                 
                     return false;                    
                 }
             
-        }
+        
         return true;   
     }
     
