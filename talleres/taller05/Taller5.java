@@ -40,8 +40,7 @@ public class Taller5 {
   
     public static boolean esValidoBK(int[] tablero, int v,Digraph g) {
        int i=v;
-           for(int j=0;j<tablero.length-1;j++)
-               // se esta validando unicamente con el nodo siguiente
+           for(int j=1;j<tablero.length-1;j++)
                 if (g.getWeight(i, j )!=0&&tablero[i]==tablero[j]){                 
                     return false;                    
                 }
