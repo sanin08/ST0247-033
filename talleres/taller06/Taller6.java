@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package taller6;
-
 import java.util.ArrayList;
 
 /**
@@ -61,18 +54,5 @@ public class Taller6 {
         }
         respuesta.add(0);
         return respuesta;
-    }
-        
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        int arr[] = new int[] {100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50};
-        int devuelta[] = cambioGreedy(24500,arr);
-        
-        for (int i = 0; i < devuelta.length; i++) {
-            System.out.print(devuelta[i]+" ");   
-        }
-        
     }
 }
