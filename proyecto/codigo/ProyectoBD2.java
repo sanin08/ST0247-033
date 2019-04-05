@@ -12,7 +12,7 @@ import javafx.util.Pair;
 
 /**
  *
- * @author ASUS
+ * @author Juan Pablo Peña, Juan Sebastian Sanin
  */
 public class ProyectoBD2 {
  static String Orden[][] = new String[205][205];
