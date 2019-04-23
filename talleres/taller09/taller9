@@ -1,0 +1,10 @@
+public static int distanciaLevenstein(String a, String b){
+   if (a.length() == 0) return b.length();
+   if (b.length() == 0) return a.length();
+   int numero = Math.min(
+   distanciaLevenstein(a.substring(0,a.length()), b) + 1 T(n) = T(n-1) + c
+   distanciaLevenstein(a, b.substring(0,b.length())) + 1 T(n) = T(n-1) + c
+   distanciaLevenstein(a.substring(0,a.length()), b.substring(0,b.length())) + aVecesSiAVecesNo T(n) = T(n-1) + c
+   ) //T(n) = 3.T(n-1) + C Es O(3 a la n)
+   return numero;
+}
