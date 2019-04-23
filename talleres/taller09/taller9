@@ -20,10 +20,7 @@ public class Taller9 {
         }
         for(int i=1;i<=str1.length;i++){
             for(int j=1;j<=str2.length;j++){ 
-                  distance[i][j]= minimo(distance[i-1][j]+1,
-                                        distance[i][j-1]+1,
-                                        distance[i-1][j-1]+
-                                        ((str1[i-1]==str2[j-1])?0:1));
+                  distance[i][j]= minimo(distance[i-1][j]+1,  distance[i][j-1]+1, distance[i-1][j-1]+ ((str1[i-1]==str2[j-1])?0:1));
             }
         }
         return distance[str1.length][str2.length];
