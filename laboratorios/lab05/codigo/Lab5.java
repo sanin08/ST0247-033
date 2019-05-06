@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lab5;
 
 /**
@@ -10,9 +6,41 @@ package lab5;
  * @author Juan Pablo Peña, Juan Sebastian Sanin
  */
 public class Lab5 {
+//Solucion planteada por el profesor
+ /**
+ * Clase en la cual se implementan los metodos del Taller de Clase #11
+ * 
+ * @author Mauricio Toro, Mateo Agudelo
+ */
+public static int heldKarp(Digraph g) {
+		
+		int n = g.size;
+		int m = 1 << n;
+		int[][] dp = new int[n][m];
+		for (int i = 0; i < n; ++i)
+			for (int j = 0; j < m; ++j)
+				dp[i][j] = -1;
+		BitmaskSet set = new BitmaskSet(n);
+		set.add(0);
+		return heldKarp(g, dp, 0, set);
+	}
 
-
- 
+	private static int heldKarp(Digraph g, int[][] dp, int v, BitmaskSet set) {
+		if (set.isFull())
+			return g.getWeight(v, 0);
+		int m = set.mask();
+		if (dp[v][m] != -1)
+			return dp[v][m];
+		int ans = Integer.MAX_VALUE;
+		for (int i = 0; i < g.size; ++i)
+			if (i != v && !set.contains(i)) {
+				BitmaskSet t = new BitmaskSet(set);
+				t.add(i);
+				ans = Math.min(ans, g.getWeight(v, i) + heldKarp(g, dp, i, t));
+			}
+		return dp[v][m] = ans;
+	}
+ // solucion con nuestro planteamiento antes de ver la respuesta( Se vieron los errores con respecto al codigo del profesor) no sirve el codigo planteado por nosotros
     public int heldCarp(Digraph g){
   final int vacio = 0;
   int n = g.size();
